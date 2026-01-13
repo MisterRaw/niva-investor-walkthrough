@@ -1,15 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIVA – Investor Walkthrough</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NIVA | Investor Walkthrough</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <h1>NIVA Investor Walkthrough</h1>
-    <p>This will become the interactive investor demo.</p>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">NIVA</div>
+      <div class="tag">Nature • Innovation • Verified • Action</div>
+    </div>
+    <div class="topbar-actions">
+      <button id="btnShare" class="btn secondary">Copy share link</button>
+      <a class="btn primary" href="#step-0">Start tour</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>Guided Tour</h2>
+      <p class="muted">Click a step, or use Next.</p>
+
+      <nav id="steps" class="steps"></nav>
+
+      <div class="navbuttons">
+        <button id="btnPrev" class="btn secondary">Back</button>
+        <button id="btnNext" class="btn primary">Next</button>
+      </div>
+
+      <div class="smallprint">
+        Public demo. No real client data.
+      </div>
+    </aside>
+
+    <section class="stage">
+      <div class="stage-header">
+        <div>
+          <h1 id="stageTitle">Investor Walkthrough</h1>
+          <p id="stageSubtitle" class="muted"></p>
+        </div>
+        <div class="pill" id="stagePill">Step</div>
+      </div>
+
+      <div class="stage-body">
+        <div class="screen">
+          <img id="screenImage" alt="" />
+          <div id="screenOverlay" class="overlay hidden"></div>
+        </div>
+
+        <div class="card">
+          <h3 id="cardTitle"></h3>
+          <p id="cardBody" class="muted"></p>
+
+          <div id="roiPanel" class="roi hidden">
+            <div class="roi-row">
+              <div>
+                <div class="label">Scale</div>
+                <div class="value"><span id="roiSites">5</span> sites</div>
+              </div>
+              <div class="range-wrap">
+                <input id="roiSlider" type="range" min="5" max="100" value="5" step="5" />
+                <div class="range-labels">
+                  <span>5</span><span>25</span><span>50</span><span>75</span><span>100+</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="roi-grid">
+              <div class="roi-box">
+                <div class="label">Units available</div>
+                <div class="value" id="roiUnits">0</div>
+              </div>
+              <div class="roi-box">
+                <div class="label">Price per unit</div>
+                <div class="value" id="roiPrice">£0</div>
+              </div>
+              <div class="roi-box">
+                <div class="label">Gross revenue (illustrative)</div>
+                <div class="value" id="roiRevenue">£0</div>
+              </div>
+              <div class="roi-box">
+                <div class="label">Net margin (illustrative)</div>
+                <div class="value" id="roiMargin">£0</div>
+              </div>
+            </div>
+
+            <p class="tiny muted">
+              These numbers are illustrative for walkthrough purposes. Replace with validated inputs from the live site cards and investor model.
+            </p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="chips" id="chips"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
