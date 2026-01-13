@@ -36,13 +36,13 @@ const steps = [
     chips: ["Obligations count", "Evidence stored", "Latest audit event"],
   },
   {
-    title: "A site",
-    sub: "Each habitat bank is a managed project",
-    image: "assets/screens/site.jpg",
+    title: "Multiple Site Management",
+    sub: "Each habitat bank is a managed project inside one operator system",
+    image: "assets/screens/sites.jpg",
     pill: "Step 5",
-    cardTitle: "Each site becomes a governed asset",
-    cardBody: "Site details, planning reference, and map context. (Next: two investor-friendly example sites with strong imagery.)",
-    chips: ["Site record", "Location context", "Expandable to many sites"],
+    cardTitle: "Sites are the core container for delivery and compliance",
+    cardBody: "Every habitat bank is represented as a structured site record. Once a site exists, obligations, evidence, audit events and snapshots attach to it, giving investors and regulators a repeatable, scalable model across a portfolio.",
+    chips: ["Site record", "Portfolio scale", "Operator view", "Compliance-ready"],
   },
   {
     title: "Obligations",
@@ -62,16 +62,24 @@ const steps = [
     cardBody: "Evidence uploads and the audit trail make compliance defensible. Investors get confidence, LPAs get clarity, operators get control.",
     chips: ["Evidence items", "Audit trail", "User accountability"],
   },
-  {
-    title: "ROI at scale",
-    sub: "Slider shows portfolio upside",
+{
+    title: "Compliance Snapshot",
+    sub: "Investor-clear reporting at a click",
     image: "assets/screens/snapshot.jpg",
     pill: "Step 8",
-    cardTitle: "Scale the model: from 5 sites to 100+",
-    cardBody: "Illustrative portfolio economics. This is where the operator sequence meets cashflow logic: timing, lag points, and receipts.",
-    chips: ["Portfolio scaling", "Cashflow narrative", "Bridge funding logic"],
-    roi: true,
-  },
+    cardTitle: "One-page proof for investors and regulators",
+    cardBody: "The snapshot auto-generates a clean, standardised report: site summary, obligation status, evidence counts, and recent audit events. It turns operational reality into investable confidence.",
+    chips: ["Board-ready PDF", "Status breakdown", "Evidence counts", "Audit summary"]
+},
+  {
+  title: "ROI at scale",
+  sub: "Slider shows portfolio upside",
+  pill: "Step 9",
+  custom: "roi",
+  cardTitle: "From 2 example sites to 100+",
+  cardBody: "Use two representative habitat banks to show unit economics, then scale the model across a portfolio with lag and sell-through assumptions.",
+  chips: ["Site A & B", "Cashflow logic", "Lag points", "Portfolio scaling"]
+},
 ];
 
 let current = 0;
@@ -162,8 +170,15 @@ function go(i){
   stageSubtitle.textContent = s.sub;
   stagePill.textContent = s.pill;
 
-  screenImage.src = s.image;
-  screenImage.alt = s.title;
+  if (s.image) {
+    screenImage.src = s.image;
+    screenImage.alt = s.title;
+    screenImage.style.display = "";
+  } else {
+    screenImage.removeAttribute("src");
+    screenImage.alt = "";
+    screenImage.style.display = "none";
+  }
 
   cardTitle.textContent = s.cardTitle;
   cardBody.textContent = s.cardBody;
@@ -171,7 +186,7 @@ function go(i){
   renderChips(s.chips);
   renderSteps();
 
-  if (s.roi){
+  if (s.custom === "roi"){
     roiPanel.classList.remove("hidden");
     renderROI();
   } else {
