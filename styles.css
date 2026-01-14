@@ -136,7 +136,9 @@ body{
   border:1px solid var(--line);
   border-radius:var(--radius);
   overflow:hidden;
-  min-height: 520px;
+  /* Responsive height: avoids big letterboxing on landscape screenshots */
+height: clamp(280px, 52vh, 440px);
+min-height: 0;
   position:relative;
 
   /* centres screenshots nicely */
