@@ -85,6 +85,7 @@ const steps = [
 let current = 0;
 
 const elSteps = document.getElementById("steps");
+const screenCustom = document.getElementById("screenCustom");
 const screenImage = document.getElementById("screenImage");
 const stageTitle = document.getElementById("stageTitle");
 const stageSubtitle = document.getElementById("stageSubtitle");
@@ -162,6 +163,59 @@ function renderROI(){
   roiMargin.textContent = money(netMargin);
 }
 
+function renderROISites(){
+  // TODO: replace these with your real Site Card numbers once final.
+  const siteA = {
+    name: "Site A – Species-rich grassland uplift",
+    img: "assets/photos/site-a.jpg",
+    area: "100 acres",
+    units: "20,000",
+    price: "£22,000",
+    note: "Baseline → habitat plan → legal securement → contractable units."
+  };
+
+  const siteB = {
+    name: "Site B – Grassland + watercourse uplift",
+    img: "assets/photos/site-b.jpg",
+    area: "100 acres",
+    units: "22,000",
+    price: "£24,000",
+    note: "Includes watercourse works (higher capex, potentially higher unit yield)."
+  };
+
+  screenCustom.innerHTML = `
+    <div class="site">
+      <img src="${siteA.img}" alt="Site A photo" />
+      <div class="site-body">
+        <p class="site-title">${siteA.name}</p>
+        <p class="muted tiny">${siteA.note}</p>
+
+        <div class="site-meta">
+          <div class="site-kpi"><strong>${siteA.area}</strong><span class="tiny muted">Area</span></div>
+          <div class="site-kpi"><strong>${siteA.units}</strong><span class="tiny muted">Units</span></div>
+          <div class="site-kpi"><strong>${siteA.price}</strong><span class="tiny muted">Illustrative price</span></div>
+          <div class="site-kpi"><strong>Operator-led</strong><span class="tiny muted">Delivery model</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site">
+      <img src="${siteB.img}" alt="Site B photo" />
+      <div class="site-body">
+        <p class="site-title">${siteB.name}</p>
+        <p class="muted tiny">${siteB.note}</p>
+
+        <div class="site-meta">
+          <div class="site-kpi"><strong>${siteB.area}</strong><span class="tiny muted">Area</span></div>
+          <div class="site-kpi"><strong>${siteB.units}</strong><span class="tiny muted">Units</span></div>
+          <div class="site-kpi"><strong>${siteB.price}</strong><span class="tiny muted">Illustrative price</span></div>
+          <div class="site-kpi"><strong>Higher capex</strong><span class="tiny muted">Watercourse works</span></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function go(i){
   current = Math.max(0, Math.min(steps.length - 1, i));
   const s = steps[current];
@@ -170,14 +224,29 @@ function go(i){
   stageSubtitle.textContent = s.sub;
   stagePill.textContent = s.pill;
 
-  if (s.image) {
-    screenImage.src = s.image;
-    screenImage.alt = s.title;
-    screenImage.style.display = "";
-  } else {
+   // SCREEN: either show an image, or show custom content (ROI sites)
+  if (s.custom === "roi") {
+    // For ROI step: hide screenshot, show Site A & B cards
     screenImage.removeAttribute("src");
     screenImage.alt = "";
     screenImage.style.display = "none";
+
+    screenCustom.classList.remove("hidden");
+    renderROISites();
+  } else {
+    // For normal steps: hide custom, show screenshot (if provided)
+    screenCustom.classList.add("hidden");
+    screenCustom.innerHTML = "";
+
+    if (s.image) {
+      screenImage.src = s.image;
+      screenImage.alt = s.title;
+      screenImage.style.display = "";
+    } else {
+      screenImage.removeAttribute("src");
+      screenImage.alt = "";
+      screenImage.style.display = "none";
+    }
   }
 
   cardTitle.textContent = s.cardTitle;
