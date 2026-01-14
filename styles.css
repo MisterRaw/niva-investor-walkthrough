@@ -40,7 +40,6 @@ body{
   color:var(--green);
 }
 .tag{font-size:13px; color:var(--muted)}
-
 .topbar-actions{display:flex; gap:10px}
 
 .layout{
@@ -48,7 +47,7 @@ body{
   grid-template-columns: 320px 1fr;
   gap:18px;
   padding:14px;
-  max-width: 1480px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -124,11 +123,13 @@ body{
   border:1px solid rgba(47,91,70,.18);
 }
 
+/* ✅ KEY FIX: always stack the right column UNDER the screen */
 .stage-body{
-  display:grid;
-  grid-template-columns: 1.7fr 1fr;
+  display:flex;
+  flex-direction:column;
   gap:14px;
   padding-top:14px;
+  min-width: 0;
 }
 
 .screen{
@@ -137,11 +138,13 @@ body{
   border-radius:var(--radius);
   overflow:hidden;
   position:relative;
-
-  aspect-ratio: 16 / 9;
-  height: clamp(320px, 52vh, 520px);
-
+  width:100%;
   display:block;
+
+  /* keeps it clean and modern, no weird beige bars */
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 62vh;
 }
 
 #screenImage{
@@ -149,7 +152,6 @@ body{
   height:100%;
   object-fit:contain;
   background:#fff;
-  border-radius:0;
   display:block;
 }
 
@@ -163,6 +165,7 @@ body{
   align-items:stretch;
 }
 
+/* Step 9 cards */
 .site{
   flex:1;
   background:#fbfaf7;
@@ -171,6 +174,7 @@ body{
   overflow:hidden;
   display:flex;
   flex-direction:column;
+  min-width:0;
 }
 
 .site img{
@@ -180,9 +184,7 @@ body{
   display:block;
 }
 
-.site-body{
-  padding:12px;
-}
+.site-body{padding:12px}
 
 .site-title{
   margin:0 0 6px 0;
@@ -226,6 +228,8 @@ body{
   border-radius:var(--radius);
   padding:14px;
   background:#fff;
+  width:100%;
+  min-width:0;
 }
 
 .card h3{margin:0 0 8px 0}
@@ -279,9 +283,15 @@ body{
   background:#fbfaf7;
 }
 
+/* Responsive */
 @media (max-width: 980px){
   .layout{grid-template-columns: 1fr}
   .sidebar{position:relative; top:auto; height:auto}
-  .stage-body{grid-template-columns: 1fr}
-  .screen{min-height: 340px}
+  .screen{max-height: 54vh}
+}
+
+@media (max-width: 720px){
+  .screen-custom{flex-direction:column}
+  .site img{height:200px}
+  .roi-grid{grid-template-columns: 1fr}
 }
