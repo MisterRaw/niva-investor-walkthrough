@@ -275,6 +275,16 @@ btnShare.addEventListener("click", async () => {
     alert("Could not copy automatically. Copy this URL:\n\n" + window.location.href);
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const btnStart = document.getElementById("btnStart");
+  if (!btnStart) return;
+
+  btnStart.addEventListener("click", (e) => {
+    e.preventDefault();          // stop the scroll-only behaviour
+    currentStep = 0;             // start at step 0
+    showStep(currentStep);       // render the tour
+  });
+});
 
 roiSlider?.addEventListener("input", renderROI);
 
