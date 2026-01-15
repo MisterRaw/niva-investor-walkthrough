@@ -280,26 +280,30 @@ btnShare.addEventListener("click", async () => {
 const screenOverlay = document.getElementById("screenOverlay");
 const btnStart = document.getElementById("btnStart");
 
-// Show the overlay on first load (until Start is clicked)
+// Overlay is visible until Start is clicked
 screenOverlay?.classList.remove("hidden");
 
+// Start button: unlock UI + go to step 0
 btnStart?.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // mark tour as started (unblocks clicks via your CSS rules)
   document.body.classList.add("tour-started");
-  document.querySelector(".stage")?.classList.add("reveal");
-
-  // hide the overlay
   screenOverlay?.classList.add("hidden");
 
-  // go to the beginning
   go(0);
   history.replaceState(null, "", "#step-0");
-  document.querySelector(".stage")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-roiSlider?.addEventListener("input", renderROI);
+// If someone loads a shared link like #step-6, honour it
+function goFromHash() {
+  const m = window.location.hash.match(/#step-(\d+)/);
+  if (m) go(parseInt(m[1], 10));
+  else go(0);
+}
 
+window.addEventListener("hashchange", goFromHash);
+
+// Keep these three at the end:
 renderSteps();
-go(0);
+goFromHash();
+roiSlider?.addEventListener("input", renderROI);
