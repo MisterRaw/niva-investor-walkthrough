@@ -106,6 +106,8 @@ const roiPrice = document.getElementById("roiPrice");
 const roiRevenue = document.getElementById("roiRevenue");
 const roiMargin = document.getElementById("roiMargin");
 
+const screenOverlay = document.getElementById("screenOverlay");
+
 // Replace these with the real “site card” numbers you already have.
 // For now: sensible placeholders.
 const BASE = {

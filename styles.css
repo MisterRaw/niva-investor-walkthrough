@@ -221,6 +221,55 @@ body{
   background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
   color:#fff;
 }
+
+/* --- Start Tour: cover + reveal --- */
+body:not(.tour-started) .stage-body,
+body:not(.tour-started) .navbuttons,
+body:not(.tour-started) .steps {
+  pointer-events: none;
+}
+
+body:not(.tour-started) .stage-body {
+  opacity: 0.22;
+  filter: blur(1px);
+  transform: translateY(4px);
+}
+
+.overlay.start-overlay{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.overlay-card{
+  max-width: 560px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(6px);
+}
+
+.overlay-card h2{
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.overlay-card p{
+  margin: 0 0 14px 0;
+  opacity: .92;
+}
+
+.stage.reveal .stage-body{
+  animation: revealIn .38s ease-out both;
+}
+
+@keyframes revealIn{
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hidden{display:none}
 
 .card{
