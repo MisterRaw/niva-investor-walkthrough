@@ -275,15 +275,17 @@ btnShare.addEventListener("click", async () => {
     alert("Could not copy automatically. Copy this URL:\n\n" + window.location.href);
   }
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const btnStart = document.getElementById("btnStart");
-  if (!btnStart) return;
+const btnStart = document.getElementById("btnStart");
 
-  btnStart.addEventListener("click", (e) => {
-    e.preventDefault();          // stop the scroll-only behaviour
-    currentStep = 0;             // start at step 0
-    showStep(currentStep);       // render the tour
-  });
+btnStart?.addEventListener("click", () => {
+  // Reset to the first step using your existing logic
+  go(0);
+
+  // Optional but nice: set URL hash so "share link" reflects start
+  history.replaceState(null, "", "#step-0");
+
+  // Optional: scroll the main stage into view so it feels like a “start”
+  document.querySelector(".stage")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 roiSlider?.addEventListener("input", renderROI);
