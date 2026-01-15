@@ -277,16 +277,25 @@ btnShare.addEventListener("click", async () => {
     alert("Could not copy automatically. Copy this URL:\n\n" + window.location.href);
   }
 });
+const screenOverlay = document.getElementById("screenOverlay");
 const btnStart = document.getElementById("btnStart");
 
-btnStart?.addEventListener("click", () => {
-  // Reset to the first step using your existing logic
+// Show the overlay on first load (until Start is clicked)
+screenOverlay?.classList.remove("hidden");
+
+btnStart?.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // mark tour as started (unblocks clicks via your CSS rules)
+  document.body.classList.add("tour-started");
+  document.querySelector(".stage")?.classList.add("reveal");
+
+  // hide the overlay
+  screenOverlay?.classList.add("hidden");
+
+  // go to the beginning
   go(0);
-
-  // Optional but nice: set URL hash so "share link" reflects start
   history.replaceState(null, "", "#step-0");
-
-  // Optional: scroll the main stage into view so it feels like a “start”
   document.querySelector(".stage")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
