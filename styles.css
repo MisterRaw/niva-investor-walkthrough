@@ -223,10 +223,22 @@ body{
 }
 
 /* --- Start Tour: cover + reveal --- */
+/* --- Start Tour: cover + reveal --- */
 body:not(.tour-started) .stage-body,
-body:not(.tour-started) .navbuttons,
 body:not(.tour-started) .steps {
   pointer-events: none;
+}
+
+/* allow Start button to be clickable even before tour starts */
+body:not(.tour-started) .navbuttons {
+  pointer-events: auto;
+}
+
+/* but keep Next/Back effectively inactive until started */
+body:not(.tour-started) #btnPrev,
+body:not(.tour-started) #btnNext {
+  pointer-events: none;
+  opacity: 0.55;
 }
 
 body:not(.tour-started) .stage-body {
