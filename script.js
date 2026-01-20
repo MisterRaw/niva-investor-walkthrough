@@ -314,6 +314,7 @@ btnShare?.addEventListener("click", async () => {
 btnStart?.addEventListener("click", (e) => {
   e.preventDefault();
   startTour(0);
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 window.addEventListener("hashchange", () => {
