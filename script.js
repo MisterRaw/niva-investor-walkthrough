@@ -4,7 +4,7 @@ const steps = [
     sub: "Proof engine + marketplace + operator logic",
     image: "assets/screens/landing.jpg",
     pill: "Step 1",
-    cardTitle: "From messy compliance to financeable nature outcomes",
+    cardTitle: "From fragmented compliance to financeable nature outcomes",
     cardBody:
       "The Humber Natural Capital platform turns long-duration environmental obligations into a gated, verifiable, financeable asset class. The platform makes compliance operational, auditable, and saleable.",
     chips: ["Compliance proof engine", "Marketplace distribution", "Operator sequence"],
@@ -16,7 +16,7 @@ const steps = [
     pill: "Step 2",
     cardTitle: "Marketplace as distribution engine",
     cardBody:
-      "Investors and off-takers see projects, units, and verification status. This becomes the trusted storefront for BNG supply, preferred by LPAs.",
+      "Investors and off-takers see projects, units, and verification status. This becomes the verified marketplace for BNG supply, preferred by LPAs.",
     chips: ["Filters", "Verified status", "Units and pricing (next)"],
   },
   {
@@ -36,7 +36,7 @@ const steps = [
     pill: "Step 4",
     cardTitle: "A single operational truth",
     cardBody:
-      "An at-a-glance view of obligations, evidence, and audit activity. This is what turns a PDF pile into a system investors can trust.",
+      "An at-a-glance view of obligations, evidence, and audit activity. This is what turns manual reporting into a system investors can trust.",
     chips: ["Obligations count", "Evidence stored", "Latest audit event"],
   },
   {
@@ -108,6 +108,7 @@ const chips = document.getElementById("chips");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 const btnShare = document.getElementById("btnShare");
+const btnStart = document.getElementById("btnStart");
 
 const roiPanel = document.getElementById("roiPanel");
 const roiSlider = document.getElementById("roiSlider");
@@ -118,9 +119,8 @@ const roiRevenue = document.getElementById("roiRevenue");
 const roiMargin = document.getElementById("roiMargin");
 
 const screenOverlay = document.getElementById("screenOverlay");
-const btnStart = document.getElementById("btnStart");
 
-// --- ROI placeholders (as you already had) ---
+// --- ROI placeholders ---
 const BASE = {
   sites: 5,
   unitsPerSite: 200,
@@ -133,28 +133,39 @@ function money(n) {
 }
 
 function renderSteps() {
+  if (!elSteps) return;
+
   elSteps.innerHTML = "";
+
   steps.forEach((s, i) => {
     const div = document.createElement("div");
     div.className = "step" + (i === current ? " active" : "");
-    div.id = step-${i};
-    div.innerHTML = 
+    div.id = `step-${i}`;
+    div.innerHTML = `
       <div class="step-num">${i + 1}</div>
       <div>
         <div class="step-title">${s.title}</div>
         <div class="step-sub">${s.sub}</div>
       </div>
-    ;
+    `;
+
     div.addEventListener("click", () => {
-      if (!started) startTour(i);
-      else go(i);
+      if (!started) {
+        startTour(i);
+      } else {
+        go(i);
+      }
     });
+
     elSteps.appendChild(div);
   });
 }
 
 function renderChips(list) {
+  if (!chips) return;
+
   chips.innerHTML = "";
+
   (list || []).forEach((t) => {
     const c = document.createElement("div");
     c.className = "chip";
@@ -164,6 +175,10 @@ function renderChips(list) {
 }
 
 function renderROI() {
+  if (!roiSlider || !roiSites || !roiUnits || !roiPrice || !roiRevenue || !roiMargin) {
+    return;
+  }
+
   const sites = Number(roiSlider.value);
   roiSites.textContent = sites;
 
@@ -178,6 +193,8 @@ function renderROI() {
 }
 
 function renderROISites() {
+  if (!screenCustom) return;
+
   const siteA = {
     name: "Site A – Species-rich grassland uplift",
     img: "assets/photos/site-a.jpg",
@@ -231,115 +248,143 @@ function go(i) {
   current = Math.max(0, Math.min(steps.length - 1, i));
   const s = steps[current];
 
-  stageTitle.textContent = s.title;
-  stageSubtitle.textContent = s.sub;
-  stagePill.textContent = s.pill || "";
+  if (stageTitle) stageTitle.textContent = s.title;
+  if (stageSubtitle) stageSubtitle.textContent = s.sub;
+  if (stagePill) stagePill.textContent = s.pill || "";
 
-  // SCREEN: either show an image, or show custom content (ROI sites)
   if (s.custom === "roi") {
-    screenImage.removeAttribute("src");
-    screenImage.alt = "";
-    screenImage.style.display = "none";
-
-    screenCustom.classList.remove("hidden");
-    renderROISites();
-  } else {
-    screenCustom.classList.add("hidden");
-    screenCustom.innerHTML = "";
-
-    if (s.image) {
-      screenImage.src = s.image;
-      screenImage.alt = s.title;
-      screenImage.style.display = "";
-    } else {
+    if (screenImage) {
       screenImage.removeAttribute("src");
       screenImage.alt = "";
       screenImage.style.display = "none";
     }
+
+    if (screenCustom) {
+      screenCustom.classList.remove("hidden");
+      renderROISites();
+    }
+  } else {
+    if (screenCustom) {
+      screenCustom.classList.add("hidden");
+      screenCustom.innerHTML = "";
+    }
+
+    if (screenImage) {
+      if (s.image) {
+        screenImage.src = s.image;
+        screenImage.alt = s.title;
+        screenImage.style.display = "";
+      } else {
+        screenImage.removeAttribute("src");
+        screenImage.alt = "";
+        screenImage.style.display = "none";
+      }
+    }
   }
 
-  cardTitle.textContent = s.cardTitle || "";
-  cardBody.textContent = s.cardBody || "";
+  if (cardTitle) cardTitle.textContent = s.cardTitle || "";
+  if (cardBody) cardBody.textContent = s.cardBody || "";
 
   renderChips(s.chips);
   renderSteps();
 
-  if (s.custom === "roi") {
-    roiPanel.classList.remove("hidden");
-    renderROI();
-  } else {
-    roiPanel.classList.add("hidden");
+  if (roiPanel) {
+    if (s.custom === "roi") {
+      roiPanel.classList.remove("hidden");
+      renderROI();
+    } else {
+      roiPanel.classList.add("hidden");
+    }
   }
 }
 
 function stepFromHash() {
-  const m = window.location.hash.match(/#step-(\d+)/);
-  if (!m) return null;
-  const n = parseInt(m[1], 10);
+  const match = window.location.hash.match(/#step-(\d+)/);
+  if (!match) return null;
+
+  const n = parseInt(match[1], 10);
   if (Number.isNaN(n)) return null;
+
   return Math.max(0, Math.min(steps.length - 1, n));
 }
 
 function startTour(stepIndex = 0) {
   started = true;
   document.body.classList.add("tour-started");
-  screenOverlay?.classList.add("hidden");
+
+  if (screenOverlay) {
+    screenOverlay.classList.add("hidden");
+  }
+
   go(stepIndex);
-  history.replaceState(null, "", #step-${stepIndex});
+  history.replaceState(null, "", `#step-${stepIndex}`);
 }
 
 // --- Events ---
-btnPrev?.addEventListener("click", () => {
-  if (!started) return;
-  go(current - 1);
-  history.replaceState(null, "", #step-${current});
-});
+if (btnPrev) {
+  btnPrev.addEventListener("click", () => {
+    if (!started) return;
+    go(current - 1);
+    history.replaceState(null, "", `#step-${current}`);
+  });
+}
 
-btnNext?.addEventListener("click", () => {
-  if (!started) return;
-  go(current + 1);
-  history.replaceState(null, "", #step-${current});
-});
+if (btnNext) {
+  btnNext.addEventListener("click", () => {
+    if (!started) return;
+    go(current + 1);
+    history.replaceState(null, "", `#step-${current}`);
+  });
+}
 
-btnShare?.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(window.location.href);
-    btnShare.textContent = "Link copied";
-    setTimeout(() => (btnShare.textContent = "Copy share link"), 1400);
-  } catch (e) {
-    alert("Could not copy automatically. Copy this URL:\n\n" + window.location.href);
-  }
-});
+if (btnShare) {
+  btnShare.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      btnShare.textContent = "Link copied";
+      setTimeout(() => {
+        btnShare.textContent = "Copy share link";
+      }, 1400);
+    } catch (e) {
+      alert("Could not copy automatically. Copy this URL:\n\n" + window.location.href);
+    }
+  });
+}
 
-btnStart?.addEventListener("click", (e) => {
-  e.preventDefault();
-  startTour(0);
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+if (btnStart) {
+  btnStart.addEventListener("click", (e) => {
+    e.preventDefault();
+    startTour(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 window.addEventListener("hashchange", () => {
   const n = stepFromHash();
   if (n === null) return;
-  if (!started) startTour(n);
-  else {
+
+  if (!started) {
+    startTour(n);
+  } else {
     go(n);
-    history.replaceState(null, "", #step-${n});
+    history.replaceState(null, "", `#step-${n}`);
   }
 });
 
-roiSlider?.addEventListener("input", renderROI);
+if (roiSlider) {
+  roiSlider.addEventListener("input", renderROI);
+}
 
 // --- Init ---
 renderSteps();
 
-// If opened via shared link, auto-start at that step.
-// Otherwise, show overlay and wait for Start.
 const initial = stepFromHash();
 if (initial !== null) {
   startTour(initial);
 } else {
-  // show overlay (if present) and pre-render step 0 behind it
-  screenOverlay?.classList.remove("hidden");
+  if (screenOverlay) {
+    screenOverlay.classList.remove("hidden");
+  }
   document.body.classList.remove("tour-started");
   go(0);
 }
