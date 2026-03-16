@@ -32,13 +32,23 @@ body{
   padding:14px 18px;
 }
 
-.brand{display:flex; gap:14px; align-items:baseline}
+.brand{display:flex; gap:14px; align-items:centre}
 .logo{
   font-weight:800;
   letter-spacing:.5px;
   font-size:20px;
   color:var(--green);
+
+  
 }
+.logo-img{
+  height:44px;
+  width:auto;
+  max-width:260px;
+  object-fit:contain;
+  display:block;
+}
+
 .tag{font-size:13px; color:var(--muted)}
 .topbar-actions{display:flex; gap:10px}
 
