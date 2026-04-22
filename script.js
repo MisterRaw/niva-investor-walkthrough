@@ -2,7 +2,7 @@ const steps = [
   {
     title: "What the platform is",
     sub: "Proof engine + marketplace + operator logic",
-    image: "assets/screens/landing.jpg",
+    image: "assets/screens/landing.png",
     pill: "Step 1",
     cardTitle: "From fragmented compliance to financeable nature outcomes",
     cardBody:
@@ -12,7 +12,7 @@ const steps = [
   {
     title: "Marketplace",
     sub: "Verified sites and units (public-facing)",
-    image: "assets/screens/marketplace.jpg",
+    image: "assets/screens/marketplace.png",
     pill: "Step 2",
     cardTitle: "Marketplace as distribution engine",
     cardBody:
@@ -22,7 +22,7 @@ const steps = [
   {
     title: "Guided access",
     sub: "Sign in to the compliance layer",
-    image: "assets/screens/login.jpg",
+    image: "assets/screens/login.png",
     pill: "Step 3",
     cardTitle: "Compliance layer is gated",
     cardBody:
@@ -32,7 +32,7 @@ const steps = [
   {
     title: "Executive dashboard",
     sub: "Operational view across obligations",
-    image: "assets/screens/dashboard.jpg",
+    image: "assets/screens/dashboard.png",
     pill: "Step 4",
     cardTitle: "A single operational truth",
     cardBody:
@@ -42,7 +42,7 @@ const steps = [
   {
     title: "Multiple Site Management",
     sub: "Each habitat bank is a managed project inside one operator system",
-    image: "assets/screens/sites.jpg",
+    image: "assets/screens/sites.png",
     pill: "Step 5",
     cardTitle: "Sites are the core container for delivery and compliance",
     cardBody:
@@ -52,7 +52,7 @@ const steps = [
   {
     title: "Obligations",
     sub: "The 30-year lifecycle becomes trackable",
-    image: "assets/screens/obligations.jpg",
+    image: "assets/screens/obligations.png",
     pill: "Step 6",
     cardTitle: "Obligations become manageable objects",
     cardBody:
@@ -62,7 +62,7 @@ const steps = [
   {
     title: "Evidence & audit trail",
     sub: "Chain of custody for proof",
-    image: "assets/screens/evidence.jpg",
+    image: "assets/screens/evidence.png",
     pill: "Step 7",
     cardTitle: "Proof you can interrogate",
     cardBody:
@@ -72,7 +72,7 @@ const steps = [
   {
     title: "Compliance Snapshot",
     sub: "Investor-clear reporting at a click",
-    image: "assets/screens/snapshot.jpg",
+    image: "assets/screens/snapshot.png",
     pill: "Step 8",
     cardTitle: "One-page proof for investors and regulators",
     cardBody:
