@@ -22,7 +22,7 @@ const steps = [
   {
     title: "Guided access",
     sub: "Sign in to the compliance layer",
-    image: "assets/screens/login.png",
+    image: "assets/screens/login.jpg",
     pill: "Step 3",
     cardTitle: "Compliance layer is gated",
     cardBody:
