@@ -1,93 +1,63 @@
 const steps = [
   {
-    title: "What the platform is",
-    sub: "Proof engine + marketplace + operator logic",
-    image: "assets/screens/landing.png",
+    title: "Secure, role-based access",
+    sub: "Gated compliance data, per-person audited logins",
+    image: "assets/screens/ecologist-login.jpg",
     pill: "Step 1",
-    cardTitle: "From fragmented compliance to financeable nature outcomes",
+    cardTitle: "Every login is a named, audited account — not a shared password",
     cardBody:
-      "The Humber Natural Capital platform turns long-duration environmental obligations into a gated, verifiable, financeable asset class. The platform makes compliance operational, auditable, and saleable.",
-    chips: ["Compliance proof engine", "Marketplace distribution", "Operator sequence"],
+      "Staff, ecological consultants and council planners each get their own role, tied to their own login. A council ecologist sees exactly the sites they're assigned to: view, add evidence, and print reports — nothing more.",
+    chips: ["Role-based access", "Row-level security", "Per-site scoping"],
   },
   {
-    title: "Marketplace",
-    sub: "Verified sites and units (public-facing)",
-    image: "assets/screens/marketplace.png",
+    title: "Alerted to issues automatically",
+    sub: "The system tells you when something needs attention",
+    image: "assets/screens/ecologist-dashboard.jpg",
     pill: "Step 2",
-    cardTitle: "Marketplace as distribution engine",
+    cardTitle: "Compliance alerts, not a spreadsheet nobody checks",
     cardBody:
-      "Investors and off-takers see projects, units, and verification status. This becomes the verified marketplace for BNG supply, preferred by LPAs.",
-    chips: ["Filters", "Verified status", "Units and pricing (next)"],
+      "This obligation is flagged At Risk, and separately the system noticed monitoring evidence hasn't been uploaded in over a year — it caught both automatically. Across a 30-year term, nobody has to remember to chase it.",
+    chips: ["At-risk flags", "Stale-evidence detection", "No manual chasing"],
   },
   {
-    title: "Guided access",
-    sub: "Sign in to the compliance layer",
-    image: "assets/screens/login.jpg",
+    title: "One record, full lifecycle",
+    sub: "From planning application to 30-year discharge",
+    image: "assets/screens/ecologist-site.jpg",
     pill: "Step 3",
-    cardTitle: "Compliance layer is gated",
+    cardTitle: "Seven gates: Intake through to 30-year Compliance",
     cardBody:
-      "Sensitive compliance data is behind sign-in. Admins can see all sites, clients see only the site(s) they’re allocated to. Public areas remain open.",
-    chips: ["RLS policies", "Per-site access", "Auditability"],
+      "Every project sits at a real, tracked stage — Intake, Screening, Viability, Commercial, Funding, Delivery, Compliance. This site is already in Gate 7, its 30-year monitoring period, but the same record carries the full history from when the application first came in.",
+    chips: ["Seven-gate lifecycle", "Project ID", "Full audit history"],
   },
   {
-    title: "Executive dashboard",
-    sub: "Operational view across obligations",
-    image: "assets/screens/dashboard.png",
+    title: "Obligations tracked for the full term",
+    sub: "Every legal condition, for all 30 years",
+    image: "assets/screens/ecologist-obligations.jpg",
     pill: "Step 4",
-    cardTitle: "A single operational truth",
+    cardTitle: "S106 obligations as manageable, trackable records",
     cardBody:
-      "An at-a-glance view of obligations, evidence, and audit activity. This is what turns manual reporting into a system investors can trust.",
-    chips: ["Obligations count", "Evidence stored", "Latest audit event"],
+      "Each habitat obligation — grassland, woodland, wetland — has its legal basis, its 30-year start and end date, its required outcome, and a live compliance status. This is what turns a filed planning condition into something anyone can check, any time.",
+    chips: ["S106 / Conservation Covenant", "30-year date tracking", "Live status"],
   },
   {
-    title: "Multiple Site Management",
-    sub: "Each habitat bank is a managed project inside one operator system",
-    image: "assets/screens/sites.png",
+    title: "Evidence, uploaded and downloaded",
+    sub: "Real files, hash-verified for integrity",
+    image: "assets/screens/ecologist-evidence.jpg",
     pill: "Step 5",
-    cardTitle: "Sites are the core container for delivery and compliance",
+    cardTitle: "Upload a survey, download it back, prove it hasn't changed",
     cardBody:
-      "Every habitat bank is represented as a structured site record. Once a site exists, obligations, evidence, audit events and snapshots attach to it, giving investors and regulators a repeatable, scalable model across a portfolio.",
-    chips: ["Site record", "Portfolio scale", "Operator view", "Compliance-ready"],
+      "Monitoring reports and survey evidence are uploaded as real files, each hashed on upload. Anyone with access to the site can download the original file back at any time — and the hash proves it's exactly what was submitted, even decades later.",
+    chips: ["Real file upload/download", "SHA-256 integrity hash", "Chain of custody"],
   },
   {
-    title: "Obligations",
-    sub: "The 30-year lifecycle becomes trackable",
-    image: "assets/screens/obligations.png",
+    title: "One-click compliance report",
+    sub: "Board- and committee-ready, generated on demand",
+    image: "assets/screens/ecologist-snapshot.jpg",
     pill: "Step 6",
-    cardTitle: "Obligations become manageable objects",
+    cardTitle: "A report you can hand to a committee without asking us for it",
     cardBody:
-      "Each obligation has outcomes, dates, status, and evidence links. This is where governance becomes day-to-day operable.",
-    chips: ["Create obligation", "Status tracking", "Compliance snapshot"],
-  },
-  {
-    title: "Evidence & audit trail",
-    sub: "Chain of custody for proof",
-    image: "assets/screens/evidence.png",
-    pill: "Step 7",
-    cardTitle: "Proof you can interrogate",
-    cardBody:
-      "Evidence uploads and the audit trail make compliance defensible. Investors get confidence, LPAs get clarity, operators get control.",
-    chips: ["Evidence items", "Audit trail", "User accountability"],
-  },
-  {
-    title: "Compliance Snapshot",
-    sub: "Investor-clear reporting at a click",
-    image: "assets/screens/snapshot.png",
-    pill: "Step 8",
-    cardTitle: "One-page proof for investors and regulators",
-    cardBody:
-      "The snapshot auto-generates a clean, standardised report: site summary, obligation status, evidence counts, and recent audit events. It turns operational reality into investable confidence.",
-    chips: ["Board-ready PDF", "Status breakdown", "Evidence counts", "Audit summary"],
-  },
-  {
-    title: "ROI at scale",
-    sub: "Slider shows portfolio upside",
-    pill: "Step 9",
-    custom: "roi",
-    cardTitle: "From 2 example sites to 100+",
-    cardBody:
-      "Use two representative habitat banks to show unit economics, then scale the model across a portfolio with lag and sell-through assumptions.",
-    chips: ["Site A & B", "Cashflow logic", "Lag points", "Portfolio scaling"],
+      "The Compliance Snapshot generates a clean report on demand: obligation status, linked evidence with hashes, and the recent audit trail. Print it, save it as a PDF, keep it on file for a discharge-of-condition check.",
+    chips: ["Auto-generated report", "Status + evidence + audit trail", "Print / Save as PDF"],
   },
 ];
 
@@ -110,27 +80,7 @@ const btnNext = document.getElementById("btnNext");
 const btnShare = document.getElementById("btnShare");
 const btnStart = document.getElementById("btnStart");
 
-const roiPanel = document.getElementById("roiPanel");
-const roiSlider = document.getElementById("roiSlider");
-const roiSites = document.getElementById("roiSites");
-const roiUnits = document.getElementById("roiUnits");
-const roiPrice = document.getElementById("roiPrice");
-const roiRevenue = document.getElementById("roiRevenue");
-const roiMargin = document.getElementById("roiMargin");
-
 const screenOverlay = document.getElementById("screenOverlay");
-
-// --- ROI placeholders ---
-const BASE = {
-  sites: 5,
-  unitsPerSite: 200,
-  pricePerUnit: 22000,
-  netMarginPct: 0.28,
-};
-
-function money(n) {
-  return "£" + Math.round(n).toLocaleString("en-GB");
-}
 
 function renderSteps() {
   if (!elSteps) return;
@@ -174,76 +124,6 @@ function renderChips(list) {
   });
 }
 
-function renderROI() {
-  if (!roiSlider || !roiSites || !roiUnits || !roiPrice || !roiRevenue || !roiMargin) {
-    return;
-  }
-
-  const sites = Number(roiSlider.value);
-  roiSites.textContent = sites;
-
-  const totalUnits = sites * BASE.unitsPerSite;
-  const grossRevenue = totalUnits * BASE.pricePerUnit;
-  const netMargin = grossRevenue * BASE.netMarginPct;
-
-  roiUnits.textContent = totalUnits.toLocaleString("en-GB");
-  roiPrice.textContent = money(BASE.pricePerUnit);
-  roiRevenue.textContent = money(grossRevenue);
-  roiMargin.textContent = money(netMargin);
-}
-
-function renderROISites() {
-  if (!screenCustom) return;
-
-  const siteA = {
-    name: "Site A – Species-rich grassland uplift",
-    img: "assets/photos/site-a.jpg",
-    area: "100 acres",
-    units: "20,000",
-    price: "£22,000",
-    note: "Baseline → habitat plan → legal securement → contractable units.",
-  };
-
-  const siteB = {
-    name: "Site B – Grassland + watercourse uplift",
-    img: "assets/photos/site-b.jpg",
-    area: "100 acres",
-    units: "22,000",
-    price: "£24,000",
-    note: "Includes watercourse works (higher capex, potentially higher unit yield).",
-  };
-
-  screenCustom.innerHTML = `
-    <div class="site">
-      <img src="${siteA.img}" alt="Site A photo" />
-      <div class="site-body">
-        <p class="site-title">${siteA.name}</p>
-        <p class="muted tiny">${siteA.note}</p>
-        <div class="site-meta">
-          <div class="site-kpi"><strong>${siteA.area}</strong><span class="tiny muted">Area</span></div>
-          <div class="site-kpi"><strong>${siteA.units}</strong><span class="tiny muted">Units</span></div>
-          <div class="site-kpi"><strong>${siteA.price}</strong><span class="tiny muted">Illustrative price</span></div>
-          <div class="site-kpi"><strong>Operator-led</strong><span class="tiny muted">Delivery model</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site">
-      <img src="${siteB.img}" alt="Site B photo" />
-      <div class="site-body">
-        <p class="site-title">${siteB.name}</p>
-        <p class="muted tiny">${siteB.note}</p>
-        <div class="site-meta">
-          <div class="site-kpi"><strong>${siteB.area}</strong><span class="tiny muted">Area</span></div>
-          <div class="site-kpi"><strong>${siteB.units}</strong><span class="tiny muted">Units</span></div>
-          <div class="site-kpi"><strong>${siteB.price}</strong><span class="tiny muted">Illustrative price</span></div>
-          <div class="site-kpi"><strong>Higher capex</strong><span class="tiny muted">Watercourse works</span></div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
 function go(i) {
   current = Math.max(0, Math.min(steps.length - 1, i));
   const s = steps[current];
@@ -252,33 +132,20 @@ function go(i) {
   if (stageSubtitle) stageSubtitle.textContent = s.sub;
   if (stagePill) stagePill.textContent = s.pill || "";
 
-  if (s.custom === "roi") {
-    if (screenImage) {
+  if (screenCustom) {
+    screenCustom.classList.add("hidden");
+    screenCustom.innerHTML = "";
+  }
+
+  if (screenImage) {
+    if (s.image) {
+      screenImage.src = s.image;
+      screenImage.alt = s.title;
+      screenImage.style.display = "";
+    } else {
       screenImage.removeAttribute("src");
       screenImage.alt = "";
       screenImage.style.display = "none";
-    }
-
-    if (screenCustom) {
-      screenCustom.classList.remove("hidden");
-      renderROISites();
-    }
-  } else {
-    if (screenCustom) {
-      screenCustom.classList.add("hidden");
-      screenCustom.innerHTML = "";
-    }
-
-    if (screenImage) {
-      if (s.image) {
-        screenImage.src = s.image;
-        screenImage.alt = s.title;
-        screenImage.style.display = "";
-      } else {
-        screenImage.removeAttribute("src");
-        screenImage.alt = "";
-        screenImage.style.display = "none";
-      }
     }
   }
 
@@ -287,15 +154,6 @@ function go(i) {
 
   renderChips(s.chips);
   renderSteps();
-
-  if (roiPanel) {
-    if (s.custom === "roi") {
-      roiPanel.classList.remove("hidden");
-      renderROI();
-    } else {
-      roiPanel.classList.add("hidden");
-    }
-  }
 }
 
 function stepFromHash() {
@@ -370,10 +228,6 @@ window.addEventListener("hashchange", () => {
     history.replaceState(null, "", `#step-${n}`);
   }
 });
-
-if (roiSlider) {
-  roiSlider.addEventListener("input", renderROI);
-}
 
 // --- Init ---
 renderSteps();
