@@ -4,9 +4,9 @@ const steps = [
     sub: "Gated compliance data, per-person audited logins",
     image: "assets/screens/ecologist-login.jpg",
     pill: "Step 1",
-    cardTitle: "Every login is a named, audited account — not a shared password",
+    cardTitle: "Every login is a named, audited account, not a shared password.",
     cardBody:
-      "Staff, ecological consultants and council planners each get their own role, tied to their own login. A council ecologist sees exactly the sites they're assigned to: view, add evidence, and print reports — nothing more.",
+      "Staff, ecological consultants and council planners each get their own role, tied to their own login. A council ecologist sees exactly the sites they're assigned to: view, add evidence, print reports and see status alerts for long-term compliance.",
     chips: ["Role-based access", "Row-level security", "Per-site scoping"],
   },
   {
@@ -16,7 +16,7 @@ const steps = [
     pill: "Step 2",
     cardTitle: "Compliance alerts, not a spreadsheet nobody checks",
     cardBody:
-      "This obligation is flagged At Risk, and separately the system noticed monitoring evidence hasn't been uploaded in over a year — it caught both automatically. Across a 30-year term, nobody has to remember to chase it.",
+      "This obligation is flagged At Risk, and separately the system noticed monitoring evidence hasn't been uploaded in over a year. It caught both automatically. Across a 30-year term, nobody has to remember to chase it.",
     chips: ["At-risk flags", "Stale-evidence detection", "No manual chasing"],
   },
   {
@@ -26,7 +26,7 @@ const steps = [
     pill: "Step 3",
     cardTitle: "Seven gates: Intake through to 30-year Compliance",
     cardBody:
-      "Every project sits at a real, tracked stage — Intake, Screening, Viability, Commercial, Funding, Delivery, Compliance. This site is already in Gate 7, its 30-year monitoring period, but the same record carries the full history from when the application first came in.",
+      "Every project sits at a real, tracked stage: Intake, Screening, Viability, Commercial, Funding, Delivery, Compliance. The site you can see is already in Gate 7, its 30-year monitoring period, but the same record carries the full immutable history from when the application first came in.",
     chips: ["Seven-gate lifecycle", "Project ID", "Full audit history"],
   },
   {
@@ -36,7 +36,7 @@ const steps = [
     pill: "Step 4",
     cardTitle: "S106 obligations as manageable, trackable records",
     cardBody:
-      "Each habitat obligation — grassland, woodland, wetland — has its legal basis, its 30-year start and end date, its required outcome, and a live compliance status. This is what turns a filed planning condition into something anyone can check, any time.",
+      "Each habitat obligation: grassland, woodland, wetland, has its legal basis, its 30-year start and end date, its required outcome, and a live compliance status. This is what turns a filed planning condition into something anyone can check, any time.",
     chips: ["S106 / Conservation Covenant", "30-year date tracking", "Live status"],
   },
   {
@@ -46,7 +46,7 @@ const steps = [
     pill: "Step 5",
     cardTitle: "Upload a survey, download it back, prove it hasn't changed",
     cardBody:
-      "Monitoring reports and survey evidence are uploaded as real files, each hashed on upload. Anyone with access to the site can download the original file back at any time — and the hash proves it's exactly what was submitted, even decades later.",
+      "Monitoring reports and survey evidence are uploaded as real files, each hashed on upload. Anyone with access to the site can download the original file back at any time, and the hash proves it's exactly what was submitted, even decades later.",
     chips: ["Real file upload/download", "SHA-256 integrity hash", "Chain of custody"],
   },
   {

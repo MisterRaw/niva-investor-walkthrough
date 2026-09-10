@@ -303,7 +303,8 @@ body:not(.tour-started) .stage-body {
   min-width:0;
 }
 
-.card h3{margin:0 0 8px 0}
+.card h3{margin:0 0 4px 0}
+.card p{margin:0}
 .divider{height:1px; background:var(--line); margin:14px 0}
 .chips{display:flex; flex-wrap:wrap; gap:8px}
 .chip{
